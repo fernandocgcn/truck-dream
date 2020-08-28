@@ -46,6 +46,14 @@ Para verificar se o computador já possui o .NET Core 3.1 instalado, na janela d
 dotnet --version
 ```
 
+[Instalar o Node Package Manager mais recente](https://www.npmjs.com/get-npm) também nesse mesmo computador que irá gerar o pacote de instalação da aplicação no servidor.  
+
+Para verificar se o computador já possui o NPM instalado, na janela do terminal (prompt de comando), execute o comando a seguir:
+
+```
+npm --version
+```
+
 No servidor onde irá hospedar a aplicação:  
 
 1. Habilitar o IIS:  
@@ -62,7 +70,7 @@ Com o SDK devidamente instalado, vá para a pasta onde estão os projetos da apl
 dotnet publish –o <OUTPUT_DIRECTORY>
 ```
 
-Depois de gerado, copie o diretório <OUTPUT_DIRECTORY> para o servidor.
+Depois de gerado (esse passo pode levar alguns minutos devido às dependências do Angular/NPM), copie o diretório <OUTPUT_DIRECTORY> para o servidor.
 
 ### Configuração do IIS
 
