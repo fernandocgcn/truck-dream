@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TruckService } from '../../services/truck.service';
  
@@ -83,7 +83,7 @@ export class FrmTruckComponent implements OnInit {
 }
 
 export function acronymValidator(acronyms: string[]): ValidatorFn {
-  return (control: AbstractControl): { [key: string]: any } | null => {
+  return (control: FormControl): { [key: string]: any } | null => {
     const notFound = control.value != null && acronyms.indexOf(control.value.Acronym) < 0;
     return notFound ? { acronym: control.value.Acronym } : null;
   };
