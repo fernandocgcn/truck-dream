@@ -1,0 +1,35 @@
+<h3 id="tableLabel">Caminhões / Trucks</h3>
+
+<p *ngIf="!trucks"><em>Carregando / Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="trucks">
+  <thead>
+    <tr>
+      <th>Número / Number</th>
+      <th>Ano de Fabricação / Production Year</th>
+      <th>Ano do Modelo / Model Year</th>
+      <th>Cor / Color</th>
+      <th>Potência / Horsepower</th>
+      <th>Quilometragem / Mileage</th>
+      <th>Modelo / Model</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let truck of trucks">
+      <td (click)="update(truck)" style="cursor: pointer">{{ truck.Id }}</td>
+      <td (click)="update(truck)" style="cursor: pointer">{{ truck.ProductionYear }}</td>
+      <td (click)="update(truck)" style="cursor: pointer">{{ truck.ModelYear }}</td>
+      <td (click)="update(truck)" style="cursor: pointer">{{ truck.Color }}</td>
+      <td (click)="update(truck)" style="cursor: pointer">{{ truck.Horsepower }}</td>
+      <td (click)="update(truck)" style="cursor: pointer">{{ truck.Mileage }}</td>
+      <td (click)="update(truck)" style="cursor: pointer">{{ truck.Model.Acronym }}</td>
+      <td><button (click)="delete(truck)" class="btn btn-primary btn-sm m-1">Excluir / Delete</button></td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td><button (click)="add()" class="btn btn-primary btn-sm m-1">Novo / New</button></td>
+    </tr>
+  </tfoot>
+</table>

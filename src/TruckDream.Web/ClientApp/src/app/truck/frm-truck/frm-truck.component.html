@@ -1,0 +1,39 @@
+<form id="regForm" class="form-horizontal" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-group required">
+    <label for="ProductionYear" class="control-label">Ano de Fabricação / Production Year :</label>
+    <input readonly type="text" maxlength="4" class="form-control form-control-sm" id="ProductionYear" formControlName="ProductionYear" />
+    <small *ngIf="invalid(form.controls.ProductionYear)" style="color:red">Ano de Fabricação inválido! Permitido somente o ano atual!</small>
+  </div>
+  <div class="form-group required">
+    <label for="ModelYear" class="control-label">Ano do Modelo / Model Year :</label>
+    <input type="text" maxlength="4" class="form-control form-control-sm" id="ModelYear" formControlName="ModelYear" />
+    <small *ngIf="invalid(form.controls.ModelYear)" style="color:red">Ano do Modelo inválido! Permitido somente o atual ou o ano subsequente!</small>
+  </div>
+  <div class="form-group">
+    <label for="Color" class="control-label">Cor / Color :</label>
+    <input type="text" class="form-control form-control-sm" id="Color" formControlName="Color" />
+    <small *ngIf="invalid(form.controls.Color)" style="color:red">Cor inválida!</small>
+  </div>
+  <div class="form-group">
+    <label for="Horsepower" class="control-label">Potência / Horsepower :</label>
+    <input type="text" class="form-control form-control-sm" id="Horsepower" formControlName="Horsepower" />
+    <small *ngIf="invalid(form.controls.Horsepower)" style="color:red">Potência inválida!</small>
+  </div>
+  <div class="form-group">
+    <label for="Mileage" class="control-label">Quilometragem / Mileage :</label>
+    <input type="text" class="form-control form-control-sm" id="Mileage" formControlName="Mileage" />
+    <small *ngIf="invalid(form.controls.Mileage)" style="color:red">Quilometragem inválida!</small>
+  </div>
+  <div class="form-group required">
+    <label for="Model" class="control-label">Modelo / Model :</label>
+    <select formControlName="Model" class="form-control form-control-sm" [compareWith]="compareFn">
+      <option [ngValue]="null"></option>
+      <option *ngFor="let m of models" [ngValue]="m">{{ m.Acronym + ' - ' + m.Name }}</option>
+    </select>
+    <small *ngIf="invalid(form.controls.Model)" style="color:red">Modelo inválido! Permitido somente os modelos FH e FM!</small>
+  </div>
+  <div class="btn-group btn-group-sm" role="group">
+    <button type="button" (click)="onReset()" class="btn btn-secondary btn-sm m-1">Limpar / Reset</button>
+    <button type="submit" class="btn btn-primary btn-sm m-1">Salvar / Save</button>
+  </div>
+</form>

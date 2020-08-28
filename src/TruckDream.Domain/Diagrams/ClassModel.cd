@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TruckDream.Domain.Entities.Model">
+    <Position X="0.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAgAAAAARAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TruckDream.Domain.Entities.Truck">
+    <Position X="3.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAICAAAAQAAAAAAAoAAAAAAAAAAAAKAAAAgAgAAAAAA=</HashCode>
+      <FileName>Entities\Truck.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Model" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,11 @@
+
+*.drawio
+*.db
+src/.vs
+src/TruckDream.Tests/bin
+src/TruckDream.Tests/obj
+src/TruckDream.Domain/bin
+src/TruckDream.Domain/obj
+src/TruckDream.Web/bin
+src/TruckDream.Web/obj
+src/TestResults
