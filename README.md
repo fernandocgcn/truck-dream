@@ -72,17 +72,16 @@ dotnet publish –o <OUTPUT_DIRECTORY>
 
 Depois de gerado (esse passo pode levar alguns minutos devido às dependências do Angular/NPM), copie o diretório <OUTPUT_DIRECTORY> para o servidor.
 
-### Configuração do IIS
+### Execução no Servidor
 
-1. Primeiro criar um Pool de Aplicativos para os sites em ASP.NET Core, para isto abra o IIS, vá em Pools de Aplicativos e clique em "Adicionar Pool de Aplicativos..."  
+1. Abra a pasta da publicação no terminal.  
 
-2. Defina o nome, e selecione "Sem Código Gerenciado" para a Versão do .NET CLR, isto porque o Hosting Bundle que instalamos irá fazer o gerenciamento da aplicação e clique em OK.  
+2. Depois digite o comando:
+```
+dotnet TruckDream.Web.dll
+```
 
-3. Para criar a aplicação basta clicar com o botão direito em Default Web Site e depois em "Adicionar Aplicativo...".
-
-4. Defina o Alias (nome da aplicação), selecione o Pool de Aplicativos criado anteriormente e a pasta onde está o conjunto de arquivos resultante da publicação no Caminho físico.  
-
-Pronto, você já pode acessar a API!
+3. Pronto, você já pode acessar a aplicação em um navegador pelo endereço mostrado no terminal (normalmente http://localhost:5000)!
 
 ## Autor
 
