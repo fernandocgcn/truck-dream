@@ -56,7 +56,7 @@ Selecione a caixa de seleção Serviços de Informações da Internet. Selecione
 
 ### Publicação
 
-Com o SDK devidamente instalado, vá para a pasta onde estão os projetos da aplicação (poll-challenge\src), para compilar a aplicação, ler as dependências especificadas nos arquivos dos projetos, e publicar o conjunto de arquivos resultante em um diretório (<OUTPUT_DIRECTORY>), execute o comando a seguir:
+Com o SDK devidamente instalado, vá para a pasta onde estão os projetos da aplicação (truck-dream\src), para compilar a aplicação, ler as dependências especificadas nos arquivos dos projetos, e publicar o conjunto de arquivos resultante em um diretório (<OUTPUT_DIRECTORY>), execute o comando a seguir:
 
 ```
 dotnet publish –o <OUTPUT_DIRECTORY>
