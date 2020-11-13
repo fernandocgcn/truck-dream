@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using TruckDream.Domain.Entities;
 
 namespace TruckDream.Domain.Data
 {
@@ -12,6 +13,7 @@ namespace TruckDream.Domain.Data
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            modelBuilder.Entity<Model>().HasData(TruckDreamDbSeed.Models());
         }
     }
 }

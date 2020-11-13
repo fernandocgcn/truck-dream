@@ -55,10 +55,10 @@ namespace TruckDream.Tests.Web.Controllers
         public async Task Insert_ShouldAddCorrectObject()
         {
             // Arrange
-            var truck = JsonSerializer.Serialize(CreateTruck(false));
+            var truckJson = JsonSerializer.Serialize(CreateTruck(false));
 
             // Act
-            var result = await truckController.Insert(truck);
+            var result = await truckController.Insert(truckJson);
             var expected = ((CreatedAtActionResult)result.Result).Value;
 
             // Assert
@@ -79,6 +79,23 @@ namespace TruckDream.Tests.Web.Controllers
 
             // Assert
             await truckController.Update(truckJson);
+        }
+
+        [TestMethod]
+        public async Task Update_ShouldUpdate()
+        {
+            // Arrange
+            var expected = CreateTruck();
+            repository.DetachAll();
+
+            // Act
+            expected.Color = "Yellow";
+            var truckJson = JsonSerializer.Serialize(expected);
+            await truckController.Update(truckJson);
+            var result = await repository.GetByIdAsync<Truck>(expected.Id);
+
+            // Assert
+            Assert.AreEqual(expected, result);
         }
 
         [TestMethod]

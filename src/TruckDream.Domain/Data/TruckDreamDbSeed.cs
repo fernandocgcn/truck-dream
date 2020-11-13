@@ -1,18 +1,16 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TruckDream.Domain.Entities;
 
 namespace TruckDream.Domain.Data
 {
-    internal static class EntityTypeBuilderExtensions
+    internal static class TruckDreamDbSeed
     {
         /// <summary>
         /// source: https://www.volvotrucks.com.br/pt-br/news/blog/institucional/significado-nomes-dos-caminhoes.html
         /// </summary>
-        /// <param name="builder"></param>
-        public static void Seed(this EntityTypeBuilder<Model> builder)
+        public static List<Model> Models()
         {
-            var models = new List<Model>()
+            return new List<Model>()
             {
                 new Model
                 {
@@ -75,7 +73,6 @@ namespace TruckDream.Domain.Data
                     Name = "Volvo Medium 32T / Volvo Médio 32T"
                 }
             };
-            builder.HasData(models);
         }
     }
 }

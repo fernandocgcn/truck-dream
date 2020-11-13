@@ -24,9 +24,6 @@ namespace TruckDream.Domain.Data.Mappings
 
             // primary key
             builder.HasKey(entity => entity.Id);
-
-            // initial db seed
-            builder.Seed();
         }
     }
 }

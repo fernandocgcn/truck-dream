@@ -16,7 +16,8 @@ namespace TruckDream.Web.Controllers
         private readonly Repository repository;
 
         public TruckController(Repository repository)
-            => this.repository = repository;
+            => this.repository = repository ??
+                throw new ArgumentNullException(nameof(repository));
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<object>>> GetAll()
@@ -44,7 +45,8 @@ namespace TruckDream.Web.Controllers
             {
                 var truck = JsonConvert.DeserializeObject<Truck>
                     (truckJson?.ToString());
-                repository.Attach(truck.Model);
+                truck.Model = await repository.GetByIdAsync
+                    <Model>(truck.Model.Id);
                 repository.InsertAsync(truck);
                 await repository.CommitAsync();
                 return CreatedAtAction(nameof(GetAll), truck);

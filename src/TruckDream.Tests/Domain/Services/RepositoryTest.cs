@@ -8,7 +8,7 @@ using TruckDream.Domain.Entities;
 using TruckDream.Domain.Services;
 using TruckDream.Tests.Mocks;
 
-namespace PollChallenge.Tests.Services
+namespace TruckDream.Tests.Services
 {
     [TestClass]
     public class RepositoryTest : ServicesMock
@@ -75,15 +75,21 @@ namespace PollChallenge.Tests.Services
         public async Task InsertAsync_ShouldIncrementNewId()
         {
             // Arrange
-            Truck expected = CreateTruck(false);
+            Truck expected1 = CreateTruck(false);
+            Truck expected2 = CreateTruck(false);
 
             // Act
-            repository.Attach(expected.Model);
-            repository.InsertAsync(expected);
+            expected1.Model = await repository.GetByIdAsync
+                <Model>(expected1.Model.Id);
+            expected2.Model = await repository.GetByIdAsync
+                <Model>(expected2.Model.Id);
+            repository.InsertAsync(expected1);
+            repository.InsertAsync(expected2);
             await repository.CommitAsync();
 
             // Assert
-            Assert.AreEqual(expected.Id, 1);
+            Assert.AreEqual(expected1.Id, 1);
+            Assert.AreEqual(expected2.Id, 2);
         }
 
         [TestMethod]

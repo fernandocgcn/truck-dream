@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace TruckDream.Domain.Services
@@ -13,7 +14,8 @@ namespace TruckDream.Domain.Services
         private readonly DbContext dbContext;
 
         public RepositoryImp(DbContext dbContext) 
-            => this.dbContext = dbContext;
+            => this.dbContext = dbContext ?? 
+                throw new ArgumentNullException(nameof(dbContext));
 
         public Task<List<TEntity>> GetAsync<TEntity>(
             Expression<Func<TEntity, bool>> filter = null,
@@ -39,9 +41,6 @@ namespace TruckDream.Domain.Services
         public void InsertAsync<TEntity>(TEntity entity) 
             where TEntity : class => dbContext.Set<TEntity>().AddAsync(entity);
 
-        public void Attach<TEntity>(TEntity entity)
-            where TEntity : class => dbContext.Set<TEntity>().Attach(entity);
-
         public void DeleteById<TEntity>(object id) where TEntity : class
         {
             var dbSet = dbContext.Set<TEntity>();
@@ -59,6 +58,11 @@ namespace TruckDream.Domain.Services
             dbSet.Update(entity);
         }
 
-        public Task<int> CommitAsync() => dbContext.SaveChangesAsync();
+        public Task<int> CommitAsync(CancellationToken cancellationToken = default) 
+            => dbContext.SaveChangesAsync(cancellationToken);
+
+        public void DetachAll()
+            => dbContext?.ChangeTracker?.Entries()?.ToList()?
+                .ForEach(entityEntry => entityEntry.State = EntityState.Detached);
     }
 }
